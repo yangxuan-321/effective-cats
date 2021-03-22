@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/effective-cats.iml" filepath="$PROJECT_DIR$/.idea/modules/effective-cats.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/effective-cats-build.iml" filepath="$PROJECT_DIR$/.idea/modules/effective-cats-build.iml" />
     </modules>
   </component>
 </project>
