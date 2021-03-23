@@ -12,12 +12,15 @@
     </properties>
     <CLASSES>
       <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo.huaweicloud.com/repository/maven/org/scala-lang/scala-library/2.13.5/scala-library-2.13.5.jar!/" />
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.iadmob.com/artifactory/maven-releases/org/scala-lang/scala-library/2.13.5/scala-library-2.13.5.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo.huaweicloud.com/repository/maven/org/scala-lang/scala-library/2.13.5/scala-library-2.13.5-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.iadmob.com/artifactory/maven-releases/org/scala-lang/scala-library/2.13.5/scala-library-2.13.5-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo.huaweicloud.com/repository/maven/org/scala-lang/scala-library/2.13.5/scala-library-2.13.5-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.iadmob.com/artifactory/maven-releases/org/scala-lang/scala-library/2.13.5/scala-library-2.13.5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

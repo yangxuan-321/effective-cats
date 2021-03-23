@@ -8,5 +8,6 @@ val catsV         = "2.1.0"
 
 libraryDependencies ++= Seq(
   "org.typelevel"              %% "cats-core"            % catsV,
-  "org.typelevel"              %% "cats-free"            % catsV
+  "org.typelevel"              %% "cats-free"            % catsV,
+  "org.typelevel"              %% "cats-effect"          % catsV
 )
