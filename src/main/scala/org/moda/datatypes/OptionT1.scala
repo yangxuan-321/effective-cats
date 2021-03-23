@@ -1,13 +1,11 @@
 package org.moda.datatypes
 
-import cats._
 import cats.data._
 import cats.implicits._
+
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
-import cats.syntax.functor._
-import cats.syntax.applicative._
-import cats.{Id, Monad}
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
 
 object OptionT1 extends App {
   def test1: Unit ={
@@ -57,8 +55,47 @@ object OptionT1 extends App {
   def test5: Unit = {
     val xc = Option(Future.successful("123"))
     val xc1 = Option(Future.successful("123"))
-    xc.map(c => c.map(_.concat("123")))
-    xc1.map(c => c.map(_.concat("456")))
+    val xxx: Option[Future[String]] = xc.map(c => c.map({
+      Thread.sleep(5000)
+      println("step1")
+      _.concat("123")
+    }))
+    val xxx1: Option[Future[String]] = xc1.map(c => c.map({
+      Thread.sleep(5000)
+      println("step2")
+      _.concat("123")
+    }))
+
+    // xxx.collect {case v => v.}
+  }
+
+  def test6: Unit ={
+    val xc = Future.successful(Option("123"))
+    val xc1 = Future.successful(Option("123"))
+    val xcx = xc.map(c => c.map({
+      Thread.sleep(5000)
+      println("step1")
+      _.concat("123")
+    }))
+    val xc1x = xc1.map(c => c.map({
+      Thread.sleep(5000)
+      println("step2")
+      _.concat("123")
+    }))
+
+    val d = for {
+      a <- xcx
+      b <- xc1x
+      c <- Future.successful(a.map(_.concat(b.getOrElse(""))))
+    } yield c
+
+//    d.onComplete {
+//      case Success(value) => println(Either.right(value.getOrElse("")))
+//      case Failure(exception) => println(Either.left(exception.getMessage))
+//    }
+
+//    Thread.sleep(11111)
+    Await.result(d, 0.nanos)
   }
 
   def customGreeting(s: Option[String]): Future[Option[String]] ={
@@ -66,7 +103,7 @@ object OptionT1 extends App {
   }
 
   def run(): Unit = {
-    test3
+    test6
     // " => -> <- != "
   }
 

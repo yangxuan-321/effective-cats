@@ -1,4 +1,8 @@
-[debug] downloaded https://repo1.iadmob.com/artifactory/maven-releases/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0.pom
-[debug] downloaded https://repo1.iadmob.com/artifactory/maven-releases/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0.jar
-[debug] downloaded https://repo1.iadmob.com/artifactory/maven-releases/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0-sources.jar
-[debug] downloaded https://repo1.iadmob.com/artifactory/maven-releases/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0-javadoc.jar
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0.pom
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0.pom.sha1
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0.jar
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0.jar.sha1
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0-sources.jar
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0-sources.jar.sha1
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0-javadoc.jar
+[debug] downloaded https://repo.huaweicloud.com/repository/maven/org/typelevel/cats-effect_2.13/2.1.0/cats-effect_2.13-2.1.0-javadoc.jar.sha1
