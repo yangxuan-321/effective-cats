@@ -1,4 +1,4 @@
 # Default ignored files
 /.bsp/
-/project/target/
-/target/
+/project/target/*
+/target/*
