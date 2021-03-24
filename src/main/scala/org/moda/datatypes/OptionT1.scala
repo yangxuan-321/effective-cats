@@ -1,13 +1,13 @@
 package org.moda.datatypes
 
 import cats.data._
+import cats.effect.IO
 import cats.implicits._
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration._
-import scala.concurrent.{Await, Future}
+import scala.concurrent.Future
 
-object OptionT1 extends App {
+object OptionT1{
   def test1: Unit ={
     // 操作需要 两次 map
     val a: Future[Option[String]] = customGreeting(Some("welcome back, Lola")).map(_.map(_ + "!"))
@@ -72,22 +72,22 @@ object OptionT1 extends App {
   def test6: Unit ={
     val xc = Future.successful(Option("123"))
     val xc1 = Future.successful(Option("123"))
-    val xcx = xc.map(c => c.map({
-      Thread.sleep(5000)
+    val xcx: Future[Option[String]] = xc.map(c => c.map({
+      // Thread.sleep(5000)
       println("step1")
       _.concat("123")
     }))
     val xc1x = xc1.map(c => c.map({
-      Thread.sleep(5000)
+      // Thread.sleep(5000)
       println("step2")
       _.concat("123")
     }))
 
-    val d = for {
-      a <- xcx
-      b <- xc1x
-      c <- Future.successful(a.map(_.concat(b.getOrElse(""))))
-    } yield c
+//    val d = for {
+//      a <- xcx
+//      b <- xc1x
+//      c <- Future.successful(a.map(_.concat(b.getOrElse(""))))
+//    } yield c
 
 //    d.onComplete {
 //      case Success(value) => println(Either.right(value.getOrElse("")))
@@ -95,17 +95,69 @@ object OptionT1 extends App {
 //    }
 
 //    Thread.sleep(11111)
-    Await.result(d, 0.nanos)
+  }
+
+  def test7(): Unit = {
+    val f1 = Future {
+      Thread.sleep(5000);
+      Option("123")
+    }
+
+    println(s"f1准备好了${System.currentTimeMillis()}...")
+
+    val f2 = Future {
+      Thread.sleep(5000);
+      Option("456")
+    }
+
+    println(s"f2准备好了${System.currentTimeMillis()}...")
+
+    f1.map(_.map({
+      Thread.sleep(2000);
+      println("step1")
+      _.concat(" good ")
+    }))
+    f2.map(_.map({
+      Thread.sleep(2000);
+      println("step2")
+      _.concat(" good ")
+    }))
   }
 
   def customGreeting(s: Option[String]): Future[Option[String]] ={
     Future.successful(s)
   }
+}
 
+object OptionT2 {
+  def test1: Unit = {
+    val f1 = IO.pure({
+      Thread.sleep(5000);
+      Option("123")
+    })
+
+    val f2 = IO.pure({
+      Thread.sleep(5000);
+      Option("456")
+    })
+
+    for {
+      f1x <- f1
+      f2x <- f2
+      c <- IO.pure(f1x.map(_.concat(f2x.getOrElse(""))))
+      d <- IO.pure({
+        println(s"hello - ${c}")
+        c
+      })
+    } yield true
+  }
+}
+
+object Main extends App {
   def run(): Unit = {
-    test6
+    OptionT2.test1
     // " => -> <- != "
   }
-
   run()
+  while(true){}
 }
