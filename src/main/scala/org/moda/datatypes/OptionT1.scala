@@ -130,6 +130,18 @@ object OptionT1{
 }
 
 object OptionT2 {
+  /**
+   * 此处意在比较 IO 和 Future 的区别
+   * 对比 OptionT2.test1 和 OptionT1.test7
+   * OptionT2.test1 -> 例如 有
+   *      a: IO[Option[String]]
+   *      b: IO[Option[String]]
+   *      c = a.map(b.xxx)
+   * 如果c没有被后续使用 这个 a,b,c的计算过程 都不会被执行
+   *
+   * OptionT1.test7 -> 例如 有
+   *
+   */
   def test1: Unit = {
     val f1 = IO.pure({
       Thread.sleep(5000);
